@@ -276,7 +276,7 @@ class MainWindow(QtWidgets.QMainWindow):
             # print(stud_list)
             row_num = 0
             for t in stud_list:
-                self.cursor.execute(f"select mark from progress where id_student={i[0]};")
+                self.cursor.execute(f"select mark from progress where id_student={t[0]};")
                 res = self.cursor.fetchall() #[("2",)("5",), ] or []
                 # print(res)
                 if len(res) != 0:
@@ -290,7 +290,7 @@ class MainWindow(QtWidgets.QMainWindow):
                     self.tableWidget_2.setItem(row_num, 8, QtWidgets.QTableWidgetItem(str(nk)))
                     row_num += 1
         except Exception as e:
-            logging.error(f"Ошибка при загрузке из БД таблицы успеваемости: {e}")
+            logging.error(f"Ошибка при загрузке из БД оценок и пропусков: {e}")
 
     def update_table1(self):
         for row in range(len(self.table1)):
